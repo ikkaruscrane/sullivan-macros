@@ -19,335 +19,91 @@
     --carb: #f5a623;
     --fat: #e05c97;
     --accent: #4a9eff;
+    --fav: #f5a623;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 0;
-  }
-  .app {
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 28px 20px 60px;
-  }
-  .top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
-  }
-  .app-title {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text2);
-  }
-  .date-nav {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .date-nav button {
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    width: 28px;
-    height: 28px;
-    color: var(--text2);
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.2s, color 0.2s;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  .app { max-width: 480px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+  .app-title { font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text2); }
+  .date-nav { display: flex; align-items: center; gap: 10px; }
+  .date-nav button { background: none; border: 1px solid var(--border); border-radius: 6px; width: 28px; height: 28px; color: var(--text2); cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, color 0.2s; }
   .date-nav button:hover { border-color: var(--text2); color: var(--text); }
-  .date-label {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    min-width: 80px;
-    text-align: center;
-  }
+  .date-label { font-size: 13px; font-weight: 500; color: var(--text); min-width: 80px; text-align: center; }
 
-  .macro-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .macro-card {
-    background: var(--surface);
-    border-radius: 10px;
-    padding: 12px 10px;
-    border: 1px solid var(--border);
-  }
-  .macro-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    margin-bottom: 8px;
-  }
-  .macro-card .val {
-    font-family: 'DM Mono', monospace;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1;
-    margin-bottom: 3px;
-  }
-  .macro-card .lbl {
-    font-size: 11px;
-    color: var(--text2);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
+  .macro-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+  .macro-card { background: var(--surface); border-radius: 10px; padding: 12px 10px; border: 1px solid var(--border); }
+  .macro-dot { width: 6px; height: 6px; border-radius: 50%; margin-bottom: 8px; }
+  .macro-card .val { font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 500; line-height: 1; margin-bottom: 3px; }
+  .macro-card .lbl { font-size: 11px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.06em; }
 
-  .bars-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 20px;
-  }
-  .bar-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
+  .bars-section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .bar-row:last-child { margin-bottom: 0; }
-  .bar-lbl {
-    font-size: 12px;
-    color: var(--text2);
-    width: 56px;
-    flex-shrink: 0;
-  }
-  .bar-track {
-    flex: 1;
-    height: 5px;
-    background: var(--surface2);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    min-width: 0;
-  }
-  .bar-amt {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--text2);
-    width: 58px;
-    text-align: right;
-    flex-shrink: 0;
-  }
+  .bar-lbl { font-size: 12px; color: var(--text2); width: 56px; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 5px; background: var(--surface2); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); min-width: 0; }
+  .bar-amt { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text2); width: 58px; text-align: right; flex-shrink: 0; }
 
   .log-section { margin-bottom: 20px; }
-  .section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text3);
-    margin-bottom: 10px;
-  }
-  .food-list { }
-  .food-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 11px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 10px; }
+  .food-item { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--border); }
   .food-item:last-child { border-bottom: none; }
   .food-left { flex: 1; min-width: 0; }
-  .food-name {
-    font-size: 14px;
-    color: var(--text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .food-sub {
-    font-size: 11px;
-    color: var(--text3);
-    margin-top: 2px;
-    font-family: 'DM Mono', monospace;
-  }
-  .food-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    margin-left: 10px;
-  }
-  .food-kcal {
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    color: var(--cal);
-  }
-  .del-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text3);
-    font-size: 18px;
-    line-height: 1;
-    padding: 0;
-    transition: color 0.15s;
-  }
-  .del-btn:hover { color: var(--fat); }
-  .empty-state {
-    text-align: center;
-    padding: 24px 0;
-    font-size: 13px;
-    color: var(--text3);
-  }
+  .food-name { font-size: 14px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .food-sub { font-size: 11px; color: var(--text3); margin-top: 2px; font-family: 'DM Mono', monospace; }
+  .food-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: 10px; }
+  .food-kcal { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--cal); }
+  .icon-btn { background: none; border: none; cursor: pointer; font-size: 15px; line-height: 1; padding: 0; transition: opacity 0.15s; opacity: 0.4; }
+  .icon-btn:hover { opacity: 1; }
+  .empty-state { text-align: center; padding: 24px 0; font-size: 13px; color: var(--text3); }
 
-  .add-section { }
-  .search-bar {
-    display: flex;
-    gap: 8px;
-  }
-  .search-bar input {
-    flex: 1;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 14px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    transition: border-color 0.2s;
-    outline: none;
-  }
+  .favs-section { margin-bottom: 20px; }
+  .favs-scroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+  .favs-scroll::-webkit-scrollbar { display: none; }
+  .fav-chip { flex-shrink: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 7px 14px; cursor: pointer; transition: border-color 0.2s; display: flex; align-items: center; gap: 8px; }
+  .fav-chip:hover { border-color: var(--fav); }
+  .fav-chip-name { font-size: 13px; color: var(--text); white-space: nowrap; }
+  .fav-chip-cal { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
+  .fav-chip-del { background: none; border: none; cursor: pointer; color: var(--text3); font-size: 14px; line-height: 1; padding: 0; margin-left: 2px; transition: color 0.15s; }
+  .fav-chip-del:hover { color: var(--fat); }
+  .favs-empty { font-size: 12px; color: var(--text3); padding: 6px 0; }
+
+  .search-bar { display: flex; gap: 8px; }
+  .search-bar input { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 14px; color: var(--text); font-family: 'DM Sans', sans-serif; transition: border-color 0.2s; outline: none; }
   .search-bar input::placeholder { color: var(--text3); }
   .search-bar input:focus { border-color: var(--accent); }
-  .log-btn {
-    background: var(--accent);
-    border: none;
-    border-radius: 8px;
-    padding: 10px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #fff;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    white-space: nowrap;
-    transition: opacity 0.2s;
-  }
+  .log-btn { background: var(--accent); border: none; border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 500; color: #fff; cursor: pointer; font-family: 'DM Sans', sans-serif; white-space: nowrap; transition: opacity 0.2s; }
   .log-btn:hover { opacity: 0.85; }
-  .log-btn:disabled { opacity: 0.4; cursor: default; }
 
-  .dropdown {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 8px;
-  }
-  .status-msg {
-    padding: 14px;
-    font-size: 13px;
-    color: var(--text2);
-    text-align: center;
-  }
-  .result-item {
-    padding: 12px 14px;
-    cursor: pointer;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-  }
+  .dropdown { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-top: 8px; }
+  .status-msg { padding: 14px; font-size: 13px; color: var(--text2); text-align: center; }
+  .result-item { padding: 12px 14px; cursor: pointer; border-bottom: 1px solid var(--border); transition: background 0.15s; }
   .result-item:last-child { border-bottom: none; }
   .result-item:hover { background: var(--surface2); }
-  .result-name {
-    font-size: 13px;
-    color: var(--text);
-    margin-bottom: 3px;
-  }
-  .result-meta {
-    font-size: 11px;
-    color: var(--text3);
-    font-family: 'DM Mono', monospace;
-  }
+  .result-name { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+  .result-meta { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
 
-  .confirm-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin-top: 8px;
-  }
-  .confirm-card h3 {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  .confirm-card .meta {
-    font-size: 11px;
-    color: var(--text2);
-    font-family: 'DM Mono', monospace;
-    margin-bottom: 14px;
-  }
-  .amount-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-  .amount-row label {
-    font-size: 12px;
-    color: var(--text2);
-  }
-  .amount-row input {
-    width: 72px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 7px 10px;
-    font-size: 13px;
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    text-align: center;
-    outline: none;
-  }
+  .confirm-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-top: 8px; }
+  .confirm-card h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .confirm-card .meta { font-size: 11px; color: var(--text2); font-family: 'DM Mono', monospace; margin-bottom: 14px; }
+  .amount-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .amount-row label { font-size: 12px; color: var(--text2); }
+  .amount-row input { width: 72px; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px; font-size: 13px; color: var(--text); font-family: 'DM Mono', monospace; text-align: center; outline: none; }
   .amount-row input:focus { border-color: var(--accent); }
-  .confirm-btns {
-    display: flex;
-    gap: 8px;
-  }
-  .btn-add {
-    background: var(--pro);
-    border: none;
-    border-radius: 7px;
-    padding: 9px 20px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #0f0f0f;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: opacity 0.2s;
-  }
+  .confirm-btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .btn-add { background: var(--pro); border: none; border-radius: 7px; padding: 9px 20px; font-size: 13px; font-weight: 500; color: #0f0f0f; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: opacity 0.2s; }
   .btn-add:hover { opacity: 0.85; }
-  .btn-back {
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    padding: 9px 16px;
-    font-size: 13px;
-    color: var(--text2);
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: border-color 0.2s;
-  }
+  .btn-back { background: none; border: 1px solid var(--border); border-radius: 7px; padding: 9px 16px; font-size: 13px; color: var(--text2); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s; }
   .btn-back:hover { border-color: var(--text2); }
+  .btn-save-fav { background: none; border: 1px solid var(--border); border-radius: 7px; padding: 9px 14px; font-size: 13px; color: var(--fav); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s; margin-left: auto; }
+  .btn-save-fav:hover { border-color: var(--fav); }
+  .btn-save-fav.already-saved { color: var(--text3); cursor: default; }
+
+  .quick-card { background: var(--surface); border: 1px solid var(--fav); border-radius: 10px; padding: 16px; margin-top: 8px; }
+  .quick-card h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .quick-card .meta { font-size: 11px; color: var(--text2); font-family: 'DM Mono', monospace; margin-bottom: 14px; }
 </style>
 </head>
 <body>
@@ -362,49 +118,22 @@
   </div>
 
   <div class="macro-cards">
-    <div class="macro-card">
-      <div class="macro-dot" style="background:var(--cal)"></div>
-      <div class="val" id="t-cal">0</div>
-      <div class="lbl">kcal</div>
-    </div>
-    <div class="macro-card">
-      <div class="macro-dot" style="background:var(--pro)"></div>
-      <div class="val" id="t-pro">0</div>
-      <div class="lbl">protein</div>
-    </div>
-    <div class="macro-card">
-      <div class="macro-dot" style="background:var(--carb)"></div>
-      <div class="val" id="t-carb">0</div>
-      <div class="lbl">carbs</div>
-    </div>
-    <div class="macro-card">
-      <div class="macro-dot" style="background:var(--fat)"></div>
-      <div class="val" id="t-fat">0</div>
-      <div class="lbl">fat</div>
-    </div>
+    <div class="macro-card"><div class="macro-dot" style="background:var(--cal)"></div><div class="val" id="t-cal">0</div><div class="lbl">kcal</div></div>
+    <div class="macro-card"><div class="macro-dot" style="background:var(--pro)"></div><div class="val" id="t-pro">0</div><div class="lbl">protein</div></div>
+    <div class="macro-card"><div class="macro-dot" style="background:var(--carb)"></div><div class="val" id="t-carb">0</div><div class="lbl">carbs</div></div>
+    <div class="macro-card"><div class="macro-dot" style="background:var(--fat)"></div><div class="val" id="t-fat">0</div><div class="lbl">fat</div></div>
   </div>
 
   <div class="bars-section">
-    <div class="bar-row">
-      <span class="bar-lbl">Calories</span>
-      <div class="bar-track"><div class="bar-fill" id="b-cal" style="width:0%;background:var(--cal)"></div></div>
-      <span class="bar-amt" id="ba-cal">0 kcal</span>
-    </div>
-    <div class="bar-row">
-      <span class="bar-lbl">Protein</span>
-      <div class="bar-track"><div class="bar-fill" id="b-pro" style="width:0%;background:var(--pro)"></div></div>
-      <span class="bar-amt" id="ba-pro">0 g</span>
-    </div>
-    <div class="bar-row">
-      <span class="bar-lbl">Carbs</span>
-      <div class="bar-track"><div class="bar-fill" id="b-carb" style="width:0%;background:var(--carb)"></div></div>
-      <span class="bar-amt" id="ba-carb">0 g</span>
-    </div>
-    <div class="bar-row">
-      <span class="bar-lbl">Fat</span>
-      <div class="bar-track"><div class="bar-fill" id="b-fat" style="width:0%;background:var(--fat)"></div></div>
-      <span class="bar-amt" id="ba-fat">0 g</span>
-    </div>
+    <div class="bar-row"><span class="bar-lbl">Calories</span><div class="bar-track"><div class="bar-fill" id="b-cal" style="width:0%;background:var(--cal)"></div></div><span class="bar-amt" id="ba-cal">0 kcal</span></div>
+    <div class="bar-row"><span class="bar-lbl">Protein</span><div class="bar-track"><div class="bar-fill" id="b-pro" style="width:0%;background:var(--pro)"></div></div><span class="bar-amt" id="ba-pro">0 g</span></div>
+    <div class="bar-row"><span class="bar-lbl">Carbs</span><div class="bar-track"><div class="bar-fill" id="b-carb" style="width:0%;background:var(--carb)"></div></div><span class="bar-amt" id="ba-carb">0 g</span></div>
+    <div class="bar-row"><span class="bar-lbl">Fat</span><div class="bar-track"><div class="bar-fill" id="b-fat" style="width:0%;background:var(--fat)"></div></div><span class="bar-amt" id="ba-fat">0 g</span></div>
+  </div>
+
+  <div class="favs-section">
+    <div class="section-label">Favourites</div>
+    <div class="favs-scroll" id="favs-scroll"></div>
   </div>
 
   <div class="log-section">
@@ -436,8 +165,80 @@ function fmtDate(d){
 }
 function getLog(d){ try{ return JSON.parse(localStorage.getItem(dateKey(d)))||[]; }catch(e){ return []; } }
 function saveLog(d,log){ localStorage.setItem(dateKey(d),JSON.stringify(log)); }
+function getFavs(){ try{ return JSON.parse(localStorage.getItem('nutrition_favourites'))||[]; }catch(e){ return []; } }
+function saveFavs(favs){ localStorage.setItem('nutrition_favourites',JSON.stringify(favs)); }
+function isFaved(name){ return getFavs().some(f=>f.name===name); }
 function totals(log){ return log.reduce((a,x)=>({cal:a.cal+x.calories,pro:a.pro+x.protein,carb:a.carb+x.carbs,fat:a.fat+x.fat}),{cal:0,pro:0,carb:0,fat:0}); }
 function pct(v,max){ return Math.min(100,Math.round(v/max*100))+'%'; }
+
+function renderFavs(){
+  const favs=getFavs();
+  const el=document.getElementById('favs-scroll');
+  if(!favs.length){
+    el.innerHTML='<span class="favs-empty">Save a food as favourite to quick-log it here</span>';
+    return;
+  }
+  el.innerHTML=favs.map((f,i)=>`
+    <div class="fav-chip" data-i="${i}">
+      <span class="fav-chip-name">${f.name}</span>
+      <span class="fav-chip-cal">${Math.round(f.cal100*f.defaultAmt/100)} kcal</span>
+      <button class="fav-chip-del" data-fi="${i}" title="Remove">×</button>
+    </div>`).join('');
+  el.querySelectorAll('.fav-chip').forEach(chip=>{
+    chip.addEventListener('click',e=>{
+      if(e.target.classList.contains('fav-chip-del')) return;
+      showQuickLog(+chip.dataset.i);
+    });
+  });
+  el.querySelectorAll('.fav-chip-del').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      const favs2=getFavs(); favs2.splice(+btn.dataset.fi,1); saveFavs(favs2);
+      renderFavs();
+      if(pendingFood) refreshSaveBtn();
+    });
+  });
+}
+
+function showQuickLog(favIdx){
+  const fav=getFavs()[favIdx];
+  if(!fav) return;
+  clearSearch();
+  document.getElementById('results-area').innerHTML=`
+    <div class="quick-card">
+      <h3>${fav.name}</h3>
+      <div class="meta">${Math.round(fav.cal100)} kcal · ${Math.round(fav.pro100)}g pro · ${Math.round(fav.carb100)}g carb · ${Math.round(fav.fat100)}g fat per 100g</div>
+      <div class="amount-row">
+        <label>Amount</label>
+        <input type="number" id="amt" value="${fav.defaultAmt}" min="1" max="5000" />
+        <label>g</label>
+      </div>
+      <div class="confirm-btns">
+        <button class="btn-add" id="add-btn">Add to log</button>
+        <button class="btn-back" id="back-btn">Cancel</button>
+      </div>
+    </div>`;
+  document.getElementById('back-btn').addEventListener('click',clearSearch);
+  document.getElementById('add-btn').addEventListener('click',()=>{
+    const amt=parseFloat(document.getElementById('amt').value)||fav.defaultAmt;
+    const r=amt/100;
+    const log=getLog(currentDate);
+    log.push({name:fav.name,calories:Math.round(fav.cal100*r),protein:Math.round(fav.pro100*r),carbs:Math.round(fav.carb100*r),fat:Math.round(fav.fat100*r),serving:Math.round(amt)+'g'});
+    saveLog(currentDate,log);
+    clearSearch();
+    render();
+  });
+}
+
+function refreshSaveBtn(){
+  const btn=document.getElementById('save-fav-btn');
+  if(!btn||!pendingFood) return;
+  if(isFaved(pendingFood.name)){
+    btn.textContent='★ Saved'; btn.classList.add('already-saved'); btn.disabled=true;
+  } else {
+    btn.textContent='☆ Save'; btn.classList.remove('already-saved'); btn.disabled=false;
+  }
+}
 
 function render(){
   const log=getLog(currentDate);
@@ -455,6 +256,7 @@ function render(){
   document.getElementById('ba-pro').textContent=Math.round(t.pro)+' g';
   document.getElementById('ba-carb').textContent=Math.round(t.carb)+' g';
   document.getElementById('ba-fat').textContent=Math.round(t.fat)+' g';
+  renderFavs();
   const fl=document.getElementById('food-list');
   if(!log.length){
     fl.innerHTML='<div class="empty-state">Nothing logged yet</div>';
@@ -467,7 +269,7 @@ function render(){
         </div>
         <div class="food-right">
           <span class="food-kcal">${Math.round(x.calories)} kcal</span>
-          <button class="del-btn" data-i="${i}">×</button>
+          <button class="icon-btn del-btn" data-i="${i}">×</button>
         </div>
       </div>`).join('');
     fl.querySelectorAll('.del-btn').forEach(b=>b.addEventListener('click',()=>{
@@ -485,26 +287,17 @@ async function searchFood(q){
   const area=document.getElementById('results-area');
   area.innerHTML='<div class="dropdown"><div class="status-msg">Searching...</div></div>';
   try{
-    const apiKey='DEMO_KEY';
-    const url=`https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(q)}&pageSize=7&dataType=Foundation,SR%20Legacy,Branded&api_key=${apiKey}`;
+    const url=`https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(q)}&pageSize=7&dataType=Foundation,SR%20Legacy,Branded&api_key=DEMO_KEY`;
     const r=await fetch(url);
     const data=await r.json();
-    const foods=(data.foods||[]).filter(f=>{
-      const nuts=f.foodNutrients||[];
-      return nuts.some(n=>n.nutrientName&&n.nutrientName.includes('Energy'));
-    });
+    const foods=(data.foods||[]).filter(f=>f.foodNutrients&&f.foodNutrients.some(n=>n.nutrientName&&n.nutrientName.includes('Energy')));
     if(!foods.length){ area.innerHTML='<div class="dropdown"><div class="status-msg">No results — try a different term</div></div>'; return; }
     area.innerHTML='<div class="dropdown">'+foods.map((f,i)=>{
-      const nuts=f.foodNutrients||[];
-      const get=(name)=>{ const n=nuts.find(x=>x.nutrientName&&x.nutrientName.includes(name)); return n?Math.round(n.value||0):0; };
-      const cal=get('Energy');
-      const pro=get('Protein');
-      const carb=get('Carbohydrate');
-      const fat=get('Total lipid');
+      const get=(name)=>{ const n=(f.foodNutrients||[]).find(x=>x.nutrientName&&x.nutrientName.includes(name)); return n?Math.round(n.value||0):0; };
       const brand=f.brandOwner||f.foodCategory||'';
       return `<div class="result-item" data-i="${i}">
         <div class="result-name">${f.description}${brand?' — <span style="opacity:0.5;font-size:11px">'+brand+'</span>':''}</div>
-        <div class="result-meta">${cal} kcal · ${pro}g pro · ${carb}g carb · ${fat}g fat per 100g</div>
+        <div class="result-meta">${get('Energy')} kcal · ${get('Protein')}g pro · ${get('Carbohydrate')}g carb · ${get('Total lipid')}g fat per 100g</div>
       </div>`;
     }).join('')+'</div>';
     foods.forEach((f,i)=>document.querySelector(`.result-item[data-i="${i}"]`).addEventListener('click',()=>showConfirm(f)));
@@ -512,9 +305,9 @@ async function searchFood(q){
 }
 
 function showConfirm(f){
-  const nuts=f.foodNutrients||[];
-  const get=(name)=>{ const n=nuts.find(x=>x.nutrientName&&x.nutrientName.includes(name)); return n?(n.value||0):0; };
+  const get=(name)=>{ const n=(f.foodNutrients||[]).find(x=>x.nutrientName&&x.nutrientName.includes(name)); return n?(n.value||0):0; };
   pendingFood={name:f.description,cal100:get('Energy'),pro100:get('Protein'),carb100:get('Carbohydrate'),fat100:get('Total lipid')};
+  const alreadySaved=isFaved(pendingFood.name);
   document.getElementById('results-area').innerHTML=`
     <div class="confirm-card">
       <h3>${f.description}</h3>
@@ -527,6 +320,7 @@ function showConfirm(f){
       <div class="confirm-btns">
         <button class="btn-add" id="add-btn">Add to log</button>
         <button class="btn-back" id="back-btn">Back</button>
+        <button class="btn-save-fav ${alreadySaved?'already-saved':''}" id="save-fav-btn" ${alreadySaved?'disabled':''}>${alreadySaved?'★ Saved':'☆ Save'}</button>
       </div>
     </div>`;
   document.getElementById('back-btn').addEventListener('click',()=>searchFood(document.getElementById('food-input').value));
@@ -538,6 +332,15 @@ function showConfirm(f){
     saveLog(currentDate,log);
     clearSearch();
     render();
+  });
+  document.getElementById('save-fav-btn').addEventListener('click',()=>{
+    if(isFaved(pendingFood.name)) return;
+    const amt=parseFloat(document.getElementById('amt').value)||100;
+    const favs=getFavs();
+    favs.push({name:pendingFood.name,cal100:pendingFood.cal100,pro100:pendingFood.pro100,carb100:pendingFood.carb100,fat100:pendingFood.fat100,defaultAmt:amt});
+    saveFavs(favs);
+    refreshSaveBtn();
+    renderFavs();
   });
 }
 
